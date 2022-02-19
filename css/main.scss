@@ -1,0 +1,727 @@
+@import "resets", "variables", "mixins";
+// HEADER
+.header {
+  top: 0;
+  z-index: 1;
+  color: $white;
+  position: sticky;
+  transition: transform 0.25s;
+  background-color: $header-background;
+
+  &--scroll {
+    transform: translateY(-4.5rem);
+  }
+
+  .header-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0.5rem 0 0;
+    background-color: $main-background;
+    @include lg {
+      flex-wrap: unset;
+      padding: 0 3rem;
+      align-items: center;
+    }
+  }
+
+  .logo-wrapp {
+    flex: 1 20%;
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0.5rem;
+    @include lg {
+      z-index: 1;
+    }
+  }
+
+  .logo-wrapp-img {
+    max-width: 11.5rem;
+    @include lg {
+      max-width: 14.2rem;
+    }
+
+    &--scroll {
+      transform: translate(-15px, 40px);
+      transition: transform 0.25s;
+    }
+  }
+
+  .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 0 2rem 0 0;
+    @include lg {
+      order: 3;
+      padding: unset;
+    }
+  }
+
+  .header-icon-weather {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 1.4rem;
+    gap: 0.5rem;
+
+    .icon-prefix {
+      @include md {
+        display: none;
+      }
+    }
+
+    .icon-title {
+      display: none;
+      @include md {
+        width: 6rem;
+        display: block;
+        text-align: right;
+      }
+    }
+
+    .icon-weather-size {
+      width: 3rem;
+      @include md {
+        width: 4rem;
+      }
+    }
+
+    .icon-celsius {
+      display: none;
+      @include md {
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 600;
+        letter-spacing: 0.64px;
+      }
+    }
+  }
+
+  .header-icon-menu {
+    position: relative;
+    width: 1.8rem;
+    height: 1.6rem;
+    direction: rtl;
+    @include lg {
+      direction: unset;
+    }
+  }
+
+  .header-menu {
+    width: 100%;
+    position: relative;
+    background-color: $main-background;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 1.5rem;
+      pointer-events: none;
+      background-image: linear-gradient(
+        270deg,
+        rgba(36, 0, 65, 0) 0,
+        rgba(36, 0, 65, 0.2) 20%,
+        rgba(36, 0, 65, 0.4) 40%,
+        rgba(36, 0, 65, 0.6) 60%,
+        rgba(36, 0, 65, 0.8) 80%,
+        $main-background
+      );
+      @include lg {
+        content: none;
+      }
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 1.5rem;
+      pointer-events: none;
+      background-image: linear-gradient(
+        90deg,
+        rgba(36, 0, 65, 0) 0,
+        rgba(36, 0, 65, 0.2) 20%,
+        rgba(36, 0, 65, 0.4) 40%,
+        rgba(36, 0, 65, 0.6) 60%,
+        rgba(36, 0, 65, 0.8) 80%,
+        $main-background
+      );
+    }
+
+    &--scroll {
+      transform: translateX(3rem);
+      padding-right: 3rem;
+      transition: transform 0.25s;
+    }
+  }
+
+  .header-menu-items {
+    display: flex;
+    overflow-x: scroll;
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .header-menu-item {
+    padding: 2rem 1.6rem 0.7rem;
+    @include lg {
+      padding: 2.8rem 1.25rem 2.5rem;
+      text-transform: uppercase;
+      font-size: 15px;
+      color: #fff;
+    }
+
+    &--lg {
+      @include lg {
+        display: none;
+      }
+    }
+
+    &--hide {
+      display: none;
+      @include lg {
+        display: unset;
+      }
+    }
+  }
+
+  .active {
+    background-color: $active-color;
+    color: $white;
+  }
+}
+/* Menu three line button */
+.menu-button {
+  @include contents(absolute, 0.9rem, 1.4rem, 0.2rem, $white);
+  right: 0;
+  @include lg {
+    display: none;
+  }
+
+  &::before {
+    content: "";
+    @include contents(absolute, -0.7rem, 1.8rem, 0.2rem, $white);
+  }
+
+  &::after {
+    content: "";
+    @include contents(absolute, 0.7rem, 1rem, 0.25rem, $white);
+  }
+}
+
+.misc-menu {
+  display: none;
+  @include lg {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .misc-menu-dots {
+    display: flex;
+  }
+
+  .misc-icon {
+    height: 0.2rem;
+    width: 0.2rem;
+    margin-right: 0.5rem;
+    background-color: $decoration-color;
+  }
+}
+// Icon classes
+.icon-dropdown {
+  font-size: 1.5rem;
+  color: $decoration-color;
+}
+
+.icon-size {
+  font-size: 1.8rem;
+}
+
+.icon-size-md {
+  font-size: 2.5rem;
+}
+
+.container {
+  @include lg {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+}
+
+.weather-page {
+  padding: 0 1rem;
+}
+
+// WEATHER with dropdown
+.weather-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+
+.weather-title {
+  display: flex;
+  gap: 0.5rem;
+  color: $wth-color;
+  @include text-modify(1.6rem, 700, 2.6rem, 0.1px, uppercase);
+
+  .weather-title-icon {
+    color: $decoration-color;
+  }
+}
+
+.weather-mobile-dropdown {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  @include md {
+    display: none;
+  }
+}
+
+.weather-md-dropdown {
+  display: none;
+  @include md {
+    display: flex;
+    gap: 2rem;
+    color: $white;
+    overflow: hidden;
+    list-style-type: none;
+  }
+}
+
+.weather-dropdown-title {
+  display: flex;
+  gap: 3rem;
+  font-size: 1.6rem;
+  padding: 0.2rem 0 0.8rem;
+  color: rgba(34, 34, 34, 0.6);
+  border-bottom: 1px solid rgba(28, 31, 34, 0.3);
+}
+
+// DROPDOWN
+.select {
+  // Removing the default dropdown arrow
+  position: relative;
+  border-bottom: 1px solid #cccccc;
+  @include md {
+    border-bottom: 1px solid rgba(28, 31, 34, 0.3);
+    min-width: 14.6rem;
+  }
+
+  .standard-select {
+    appearance: none;
+    text-align: left;
+    display: block;
+    width: 100%;
+    outline: none;
+    height: 5rem;
+    float: right;
+    font-size: 1.6rem;
+    line-height: 1.75;
+    color: #888;
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    word-break: normal;
+    @include md {
+      padding: 0 6rem 0 0;
+    }
+  }
+}
+
+.select::after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-bottom: 3px solid;
+  border-right: 3px solid;
+  transform: rotate(45deg);
+  right: 0.4rem;
+  top: 1.6rem;
+  pointer-events: none;
+  color: $decoration-color;
+  transition: all 0.4s ease;
+}
+
+.active::after {
+  content: "";
+  transform: rotate(226deg);
+  transition: all 0.4s ease;
+}
+
+.dropdown-choice {
+  display: grid;
+  padding: 1.5rem 2rem;
+  @include md {
+    padding: unset;
+  }
+}
+
+// MAIN WEATHER
+.weather-page-main {
+  background-color: $main-background;
+  @include md {
+    width: calc(50% - 5px);
+  }
+  @include lg {
+    display: flex;
+    background-color: #1d0535;
+    width: calc(64% - 5px);
+  }
+}
+
+.weather-page-wrapp {
+  @include md {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+  @include lg {
+    justify-content: unset;
+  }
+}
+
+.weather-page-current {
+  padding: 3rem 2rem;
+  @include lg {
+    position: relative;
+    top: -1.5rem;
+    left: -0.6rem;
+    background-color: $main-background;
+    width: 50%;
+  }
+}
+
+.current-title {
+  @include text-modify(1.2rem, 700, 1.4rem, 0.48px, uppercase);
+  margin-bottom: 1.8rem;
+  @include lg {
+    line-height: 1.7rem;
+    margin-bottom: 3rem;
+  }
+}
+
+.current-city {
+  @include text-modify(2rem, 600, 0.8px, 0.8px, capitalize);
+  margin-bottom: 3.5rem;
+  @include lg {
+    font-size: 2.2rem;
+    line-height: 3rem;
+    letter-spacing: 0.88px;
+    margin-bottom: 5rem;
+  }
+}
+
+.current-time {
+  color: $decoration-color;
+  @include text-modify(1.3rem, 400, 1.6rem, 0.52px, capitalize);
+  @include lg {
+    font-size: 1.5rem;
+  }
+}
+
+.current-temp {
+  margin: 1.2rem 0 -2rem;
+  @include text-modify(6rem, 400, 10.8rem, 2.4px, capitalize);
+}
+
+.current-destination-main {
+  display: flex;
+  margin-bottom: 3rem;
+  justify-content: space-between;
+  border-bottom: 1px solid hsla(0, 0%, 88.2%, 0.2);
+}
+
+.current-destination-info {
+  white-space: nowrap;
+}
+
+.current-destination-icon {
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  text-align: center;
+  position: relative;
+  bottom: 3rem;
+  @include lg {
+    bottom: 4rem;
+  }
+}
+
+.wth-img {
+  width: 13.4rem;
+  @include lg {
+    width: 15.4rem;
+  }
+}
+
+.weather-current-wind {
+  display: flex;
+  justify-content: space-between;
+}
+
+.weather-current-wind-item {
+  display: flex;
+  gap: 0.5rem;
+  @include lg {
+    font-size: 1.7rem;
+    line-height: 2rem;
+    letter-spacing: 0.68px;
+    padding: 0 1.5rem 0 0;
+  }
+}
+
+.weather-page-next {
+  display: flex;
+  padding: 3rem 0;
+  text-align: center;
+  justify-content: space-around;
+  background-color: $wth-next;
+
+  @include lg {
+    width: 50%;
+    position: relative;
+    flex-direction: column;
+    justify-content: unset;
+    padding: 4.5rem 3rem 4.5rem 3.4rem;
+  }
+}
+
+.weather-next {
+  width: 25%;
+  @include lg {
+    width: 100%;
+  }
+
+  &:first-of-type {
+    @include lg {
+      padding: 2rem 0 8.5rem 0;
+      border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+    }
+  }
+
+  &:last-of-type {
+    @include lg {
+      padding-top: 4.5rem;
+    }
+  }
+
+  .weather-next-title {
+    @include text-modify(1rem, 700, 1.2rem, 0.4px, uppercase);
+    @include lg {
+      @include text-modify(1.4rem, 700, 1.2rem, 0.4px, uppercase);
+      text-align: left;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .weather-next-image {
+    width: 8rem;
+    height: 8rem;
+    margin: 2rem 0;
+    @include lg {
+      width: 11rem;
+      height: 11rem;
+    }
+  }
+
+  .weather-current-wind {
+    @include lg {
+      justify-content: unset;
+    }
+  }
+}
+
+.image-desktop-top {
+  @include lg {
+    position: absolute;
+    right: 3rem;
+    top: 20%;
+    transform: translateY(-50%);
+  }
+}
+
+.image-desktop-bottom {
+  @include lg {
+    position: absolute;
+    right: 3rem;
+    top: 70%;
+    transform: translateY(-50%);
+  }
+}
+
+// OVerlay
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100vw;
+  visibility: hidden;
+
+  &.open {
+    visibility: visible;
+  }
+
+  .overlay-close {
+    text-align: right;
+    padding: 2rem 1.5rem;
+    width: 14%;
+    position: relative;
+    left: 86%;
+  }
+
+  .overlay-title {
+    padding: 3rem 2rem;
+    @include text-modify(2rem, 600, 1.6rem, 0.8px, none);
+  }
+
+  .overlay-veil {
+    height: 100vh;
+    color: $white;
+    overflow: hidden;
+    background: $main-background;
+    list-style-type: none;
+    @include transition-ease;
+    transform: translateY(-100%);
+
+    &.open {
+      transform: translateY(0);
+    }
+
+    .overlay-button {
+      position: absolute;
+      left: 2rem;
+      bottom: 2rem;
+      border: unset;
+      color: $white;
+      padding: 1.2rem 0;
+      width: calc(100% - 4rem);
+      background-color: $decoration-color;
+      @include text-modify(1.4rem, 600, 1.6rem, 0.8px, uppercase);
+    }
+  }
+}
+
+.map-sr {
+  padding: 2rem 0;
+  @include md {
+    padding: unset;
+  }
+}
+
+.map-main {
+  position: relative;
+  background: url("../img/serbia.png") no-repeat 70% 30%;
+  background-size: cover;
+  width: 34rem;
+  height: 45.7rem;
+  @include md {
+    height: 100%;
+    width: 37.9rem;
+  }
+
+  .map-title {
+    color: $black;
+    font-size: 1.5rem;
+  }
+
+  .map-subotica {
+    @include pinpoint(2.5rem, 5rem);
+    @include lg {
+      left: 9rem;
+    }
+  }
+
+  .map-kikinda {
+    @include pinpoint(5.5rem, 13rem);
+    @include lg {
+      left: 16rem;
+    }
+  }
+
+  .map-ns {
+    @include pinpoint(11.5rem, 5.5rem);
+    @include lg {
+      left: 9rem;
+    }
+  }
+
+  .map-vrsac {
+    @include pinpoint(10.5rem, 18rem);
+    @include lg {
+      left: 21rem;
+    }
+  }
+
+  .map-bg {
+    @include pinpoint(16.5rem, 13rem);
+    @include lg {
+      left: 16rem;
+    }
+  }
+
+  .map-kragujevac {
+    @include pinpoint(20.5rem, 15rem);
+    @include lg {
+      left: 19rem;
+    }
+  }
+
+  .map-zlatibor {
+    @include pinpoint(24.5rem, 5rem);
+    @include lg {
+      left: 9rem;
+    }
+  }
+
+  .map-kraljevo {
+    @include pinpoint(24.5rem, 14rem);
+    @include lg {
+      left: 18rem;
+    }
+  }
+
+  .map-sjenica {
+    @include pinpoint(29rem, 9rem);
+    @include lg {
+      top: 27rem;
+      left: 14rem;
+    }
+  }
+
+  .map-nis {
+    @include pinpoint(29rem, 25.5rem);
+    @include lg {
+      top: 27rem;
+      left: 30rem;
+    }
+  }
+
+  .map-vranje {
+    @include pinpoint(35rem, 23.5rem);
+    @include lg {
+      top: 30rem;
+      left: 25rem;
+    }
+  }
+}
