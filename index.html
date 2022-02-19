@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather-Mondo</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div>
+        <header class="header" data-scroll-header>
+            <div class="header-top">
+                <div class="logo-wrapp">
+                    <a class="logo-link">
+                        <img src="img/mondo.webp" alt="mondo logo" class="logo-wrapp-img" data-scroll-image>
+                    </a>
+                </div>
+                <div class="header-icons">
+                    <div class="header-icon-weather">
+                        <p data-icon-prefix class="icon-prefix"></p>
+                        <p data-icon-city class="icon-title"></p>
+                        <img src="" alt="weather" class="icon-weather-size" data-icon-img>
+                        <strong data-icon-celsius class="icon-celsius"></strong>
+                    </div>
+                    <i class="fas fa-search icon-size"></i>
+                    <div class="header-icon-menu">
+                        <span class="menu-button"></span>
+                        <a class="misc-menu">
+                            <span class="misc-menu-dots">
+                                <i class="misc-icon"></i>
+                                <i class="misc-icon"></i>
+                                <i class="misc-icon"></i>
+                            </span>
+                            <span class="misc-menu-dots">
+                                <i class="misc-icon"></i>
+                                <i class="misc-icon"></i>
+                                <i class="misc-icon"></i>
+                            </span>
+                            <span class="misc-menu-dots">
+                                <i class="misc-icon"></i>
+                                <i class="misc-icon"></i>
+                                <i class="misc-icon"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-menu" data-scroll-menu>
+                    <ul class="header-menu-items">
+                        <li class="header-menu-item">Naslovna</li>
+                        <li class="header-menu-item">Najnovije</li>
+                        <li class="header-menu-item active">BAR Rijaliti</li>
+                        <li class="header-menu-item">Korona</li>
+                        <li class="header-menu-item">Sport</li>
+                        <li class="header-menu-item header-menu-item--hide">Još &nbsp;<i
+                                class="fas fa-ellipsis-v current-time"></i></li>
+                        <li class="header-menu-item header-menu-item--lg">Info</li>
+                        <li class="header-menu-item header-menu-item--lg">Smartlife</li>
+                        <li class="header-menu-item header-menu-item--lg">Zabava</li>
+                        <li class="header-menu-item header-menu-item--lg">Magazin</li>
+                        <li class="header-menu-item header-menu-item--lg">Kolumne</li>
+                        <li class="header-menu-item header-menu-item--lg">Lepa i srećna</li>
+                        <li class="header-menu-item header-menu-item--lg">Wanted</li>
+                        <li class="header-menu-item header-menu-item--lg">Sensa</li>
+                        <li class="header-menu-item header-menu-item--lg">Stvar ukusa</li>
+                        <li class="header-menu-item header-menu-item--lg">Yumama</li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <main>
+
+            <section class="overlay" data-overlay>
+                <div class="overlay-veil" data-veil>
+
+                    <div class="overlay-close" data-overlay-close>
+                        <i class="fas fa-times icon-size-md"></i>
+                    </div>
+
+                    <div class="overlay-title">
+                        <h2 data-idk>Izaberi lokaciju</h2>
+                    </div>
+
+                    <div class="dropdown-choice">
+                        <div class="select" data-arrow='town'>
+                            <select class="standard-select" data-select='town'>
+                                <option value="Belgrade">Beograd</option>
+                                <option value="Niš">Niš</option>
+                                <option value="Subotica">Subotica</option>
+                                <option value="Novi Sad">Novi Sad</option>
+                                <option value="Kikinda">Kikinda</option>
+                                <option value="Majdanpek">Majdanpek</option>
+                                <option value="Cacak">Cacak</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-choice">
+                        <div class="select" data-arrow='region'>
+                            <select class="standard-select" data-select='region'>
+                                <option value="">Region</option>
+                                <option value="Zagreb">Zagreb</option>
+                                <option value="Ljubljana">Ljubljana</option>
+                                <option value="Sarajevo">Sarajevo</option>
+                                <option value="Skoplje">Skoplje</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-choice">
+                        <div class="select" data-arrow='eu'>
+                            <select class="standard-select" data-select='eu'>
+                                <option value="">Evropa</option>
+                                <option value="Berlin">Berlin</option>
+                                <option value="Atina">Atina</option>
+                                <option value="Rome">Rim</option>
+                                <option value="Moscow">Moskva</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <button class="overlay-button" data-submit>Sacuvaj</button>
+
+                </div>
+            </section>
+            <section class="weather-page container">
+                <div class="weather-page-header">
+                    <p class="weather-title"><i class="fas fa-plus-square icon-size-md weather-title-icon"></i>VREME</p>
+
+                    <div class="weather-mobile-dropdown" data-btn>
+                        <p class="weather-dropdown-title">Izaberi lokaciju <i
+                                class="fas fa-chevron-down icon-dropdown"></i>
+                        </p>
+                    </div>
+
+                    <div class="weather-md-dropdown">
+                        <div class="dropdown-choice">
+                            <div class="select" data-arrow='town'>
+                                <select class="standard-select" data-dropdown-select='grad' data-select='town'>
+                                    <option value="">Grad</option>
+                                    <option value="Belgrade">Beograd</option>
+                                    <option value="Niš">Niš</option>
+                                    <option value="Subotica">Subotica</option>
+                                    <option value="Novi Sad">Novi Sad</option>
+                                    <option value="Kikinda">Kikinda</option>
+                                    <option value="Majdanpek">Majdanpek</option>
+                                    <option value="Cacak">Cacak</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-choice">
+                            <div class="select" data-arrow='region'>
+                                <select class="standard-select" data-dropdown-select='region' data-select='region'>
+                                    <option value="">Region</option>
+                                    <option value="Zagreb">Zagreb</option>
+                                    <option value="Ljubljana">Ljubljana</option>
+                                    <option value="Sarajevo">Sarajevo</option>
+                                    <option value="Skoplje">Skoplje</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-choice">
+                            <div class="select" data-arrow='eu'>
+                                <select class="standard-select" data-dropdown-select='evropa' data-select='eu'>
+                                    <option value="">Evropa</option>
+                                    <option value="Berlin">Berlin</option>
+                                    <option value="Atina">Atina</option>
+                                    <option value="Rome">Rim</option>
+                                    <option value="Moscow">Moskva</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weather-page-wrapp">
+                    <div class="weather-page-main">
+                        <div class="weather-page-current">
+                            <div class="current-destination-text">
+                                <p class="current-title">Trenutno</p>
+                                <p class="current-city" data-city></p>
+                            </div>
+                            <div class="current-destination-main">
+                                <div class="current-destination-info">
+                                    <p class="current-time" data-localtime></p>
+                                    <p class="current-temp" data-temp></p>
+                                </div>
+                                <div class="current-destination-icon">
+                                    <img src="" alt="weather" class="wth-img" data-img>
+                                    <p data-info></p>
+                                </div>
+                            </div>
+
+                            <ul class="weather-current-wind">
+                                <li class="weather-current-wind-item"><i class="fas fa-arrow-up current-time"></i>
+                                    <p data-high></p>
+                                </li>
+                                <li class="weather-current-wind-item"><i class="fas fa-arrow-down current-time"></i>
+                                    <p data-low></p>
+                                </li>
+                                <li class="weather-current-wind-item"><i class="fas fa-wind current-time"></i>
+                                    <p data-wind></p>
+                                </li>
+                                <li class="weather-current-wind-item"><i class="fas fa-tint current-time"></i>
+                                    <p data-humidity></p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="weather-page-next">
+                            <div class="weather-next">
+                                <p class="weather-next-title">Sutra</p>
+                                <img src="" alt="weather" class="weather-next-image image-desktop-top"
+                                    data-img-tomorrow>
+                                <ul class="weather-current-wind">
+                                    <li class="weather-current-wind-item"><i class="fas fa-arrow-up current-time"></i>
+                                        <p data-high-tomorrow></p>
+                                    </li>
+                                    <li class="weather-current-wind-item"><i class="fas fa-arrow-down current-time"></i>
+                                        <p data-low-tomorrow></p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="weather-next">
+                                <p class="weather-next-title">Prekosutra</p>
+                                <img src="" alt="weather" class="weather-next-image image-desktop-bottom"
+                                    data-img-dayafter>
+                                <ul class="weather-current-wind">
+                                    <li class="weather-current-wind-item"><i class="fas fa-arrow-up current-time"></i>
+                                        <p data-high-dayafter></p>
+                                    </li>
+                                    <li class="weather-current-wind-item"><i class="fas fa-arrow-down current-time"></i>
+                                        <p data-low-dayafter></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-sr">
+                        <div class="map-main">
+                            <div class="map-subotica">
+                                <p class="map-title" data-locations="Subotica"></p>
+                                <span data-cels="Subotica"></span>
+                            </div>
+
+                            <div class="map-kikinda">
+                                <p class="map-title" data-locations="Kikinda"></p>
+                                <span data-cels="Kikinda"></span>
+                            </div>
+
+                            <div class="map-ns">
+                                <p class="map-title" data-locations="Novi Sad"></p>
+                                <span data-cels="Novi Sad"></span>
+                            </div>
+
+                            <div class="map-vrsac">
+                                <p class="map-title" data-locations="Vršac"></p>
+                                <span data-cels="Vršac"></span>
+                            </div>
+
+                            <div class="map-bg">
+                                <p class="map-title" data-locations="Belgrade"></p>
+                                <span data-cels="Belgrade"></span>
+                            </div>
+
+                            <div class="map-kragujevac">
+                                <p class="map-title" data-locations="Kragujevac"></p>
+                                <span data-cels="Kragujevac"></span>
+                            </div>
+
+                            <div class="map-zlatibor">
+                                <p class="map-title" data-locations="Zlatibor"></p>
+                                <span data-cels="Zlatibor"></span>
+                            </div>
+
+                            <div class="map-kraljevo">
+                                <p class="map-title" data-locations="Kraljevo"></p>
+                                <span data-cels="Kraljevo"></span>
+                            </div>
+
+                            <div class="map-sjenica">
+                                <p class="map-title" data-locations="Sjenica"></p>
+                                <span data-cels="Sjenica"></span>
+                            </div>
+
+                            <div class="map-nis">
+                                <p class="map-title" data-locations="Niš"></p>
+                                <span data-cels="Niš"></span>
+                            </div>
+
+                            <div class="map-vranje">
+                                <p class="map-title" data-locations="Vranje"></p>
+                                <span data-cels="Vranje"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
