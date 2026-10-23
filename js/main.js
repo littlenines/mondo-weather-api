@@ -25,7 +25,7 @@
   const humidity = document.querySelector('[data-humidity]');
   const localtime = document.querySelector('[data-localtime]');
 
-  const api_key = 'REMOVED_WEATHER_API_KEY';
+  const api_key = WEATHER_API_KEY;
 
   // TIME
   const options = { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' };
